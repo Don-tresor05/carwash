@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<title>Booking - Auto Spa</title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />		
+
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+		<link rel="stylesheet" type="text/css" href="style/jquery.qtip.css"/>
+		<link rel="stylesheet" type="text/css" href="style/jquery-ui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="style/superfish.css"/>
+		<link rel="stylesheet" type="text/css" href="style/flexnav.css"/>
+		<link rel="stylesheet" type="text/css" href="style/base.css"/> 
+		<link rel="stylesheet" type="text/css" href="style/responsive.css"/> 
+		
+		<script type="text/javascript" src="script/jquery.min.js"></script>
+
+	</head>
+
+	<body>
+	<div class="template-header template-header-background template-header-background-3">
+		<div class="template-header-top">
+			<div class="template-header-top-logo">
+				<a href="home.html">
+					<img src="media/image/logo.png" alt="" class="template-logo"/>
+					<img src="media/image/logo_sticky.png" alt="" class="template-logo template-logo-sticky"/>
+				</a>
+			</div>
+			<div class="template-header-top-menu template-main">
+				<nav>
+					<div class="template-component-menu-default">
+						<ul class="sf-menu">
+							<li><a href="home.html">Home</a></li>
+							<li><a href="services.html">Services</a></li>
+							<li><a href="booking.html" class="template-state-selected">Booking</a></li>
+							<li><a href="contact.html">Contact</a></li>
+						</ul>
+					</div>
+				</nav>
+				<script type="text/javascript">
+					jQuery(document).ready(function($){
+						$('.template-header-top').templateHeader();
+					});
+				</script>
+			</div>
+			<div class="template-header-top-icon-list template-component-social-icon-list-1">
+				<ul class="template-component-social-icon-list">
+					<li><a href="#" class="template-icon-social-twitter" target="_blank"></a></li>
+					<li><a href="#" class="template-icon-social-facebook" target="_blank"></a></li>
+					<li><a href="booking.html" class="template-icon-meta-cart"></a></li>
+					<li><a href="#" class="template-icon-meta-search"></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="template-header-bottom">
+			<div class="template-main">
+				<div class="template-header-bottom-page-title">
+					<h1>Book Your Wash</h1>
+				</div>
+				<div class="template-header-bottom-page-breadcrumb">
+					<a href="home.html">Home</a><span class="template-icon-meta-arrow-right-12"></span><a href="#">Booking</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="template-content">
+		<div class="template-section template-section-padding-1 template-main">
+			<div class="template-layout-66x33 template-clear-fix">
+				<div class="template-layout-column-left">
+					<form class="template-component-contact-form">
+						<div class="template-component-form-field template-state-block">
+							<label for="booking-form-name">Name *</label>
+							<input type="text" name="booking-form-name" id="booking-form-name"/>
+						</div>
+						<div class="template-component-form-field template-state-block template-margin-top-2">
+							<label for="booking-form-phone">Phone *</label>
+							<input type="tel" name="booking-form-phone" id="booking-form-phone"/>
+						</div>
+						<div class="template-component-form-field template-state-block template-margin-top-2">
+							<label for="booking-form-email">Email *</label>
+							<input type="email" name="booking-form-email" id="booking-form-email"/>
+						</div>
+						<div class="template-component-form-field template-state-block template-margin-top-2">
+							<label for="booking-form-service">Service *</label>
+							<select name="booking-form-service" id="booking-form-service">
+								<option value="">Select a service</option>
+								<option value="basic">Basic Wash - $15</option>
+								<option value="premium">Premium Wash - $35</option>
+								<option value="deluxe">Deluxe Detail - $75</option>
+							</select>
+						</div>
+						<div class="template-component-form-field template-state-block template-margin-top-2">
+							<label for="booking-form-date">Preferred Date *</label>
+							<input type="date" name="booking-form-date" id="booking-form-date"/>
+						</div>
+						<div class="template-component-form-field template-state-block template-margin-top-2">
+							<label for="booking-form-time">Preferred Time *</label>
+							<select name="booking-form-time" id="booking-form-time">
+								<option value="">Select time</option>
+								<option value="09:00">9:00 AM</option>
+								<option value="10:00">10:00 AM</option>
+								<option value="11:00">11:00 AM</option>
+								<option value="12:00">12:00 PM</option>
+								<option value="13:00">1:00 PM</option>
+								<option value="14:00">2:00 PM</option>
+								<option value="15:00">3:00 PM</option>
+								<option value="16:00">4:00 PM</option>
+								<option value="17:00">5:00 PM</option>
+							</select>
+						</div>
+						<div class="template-component-form-field template-state-block template-margin-top-2">
+							<label for="booking-form-vehicle">Vehicle Type</label>
+							<input type="text" name="booking-form-vehicle" id="booking-form-vehicle" placeholder="e.g., Toyota Camry"/>
+						</div>
+						<div class="template-margin-top-3 template-state-block">
+							<input type="submit" value="Submit Booking" class="template-component-button" name="booking-form-submit" id="booking-form-submit"/>
+						</div>
+					</form>
+				</div>
+				<div class="template-layout-column-right">
+					<h3>Booking Information</h3>
+					<p class="template-margin-top-2">Fill out the form to book your car wash appointment. We will contact you shortly to confirm your booking.</p>
+					<div class="template-margin-top-3">
+						<h4>Business Hours</h4>
+						<p class="template-margin-top-1">Monday - Friday: 8:00 AM - 6:00 PM<br/>
+						Saturday: 9:00 AM - 5:00 PM<br/>
+						Sunday: 10:00 AM - 4:00 PM</p>
+					</div>
+					<div class="template-margin-top-3">
+						<h4>Contact</h4>
+						<p class="template-margin-top-1">Phone: (555) 123-4567<br/>
+						Email: info@autospa.com</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="template-footer">
+		<div class="template-main">
+			<div class="template-footer-top">
+				<div class="template-layout-25x25x25x25 template-clear-fix">
+					<div class="template-layout-column-left">
+						<h6>About</h6>
+						<p>AutoSpa is an eco-friendly hand car wash and detailing service.</p>
+						<img src="media/image/logo.png" alt="" class="template-logo" />
+					</div>
+					<div class="template-layout-column-center-left">
+						<h6>Services</h6>
+						<ul class="template-list-reset">
+							<li><a href="services.html">Exterior Hand Wash</a></li>
+							<li><a href="services.html">Interior Vacuum</a></li>
+							<li><a href="services.html">Wheel Shine</a></li>
+							<li><a href="services.html">Hand Wax</a></li>
+						</ul>
+					</div>
+					<div class="template-layout-column-center-right">
+						<h6>Company</h6>
+						<ul class="template-list-reset">
+							<li><a href="home.html">Home</a></li>
+							<li><a href="services.html">Services</a></li>
+							<li><a href="booking.html">Booking</a></li>
+							<li><a href="contact.html">Contact</a></li>
+						</ul>
+					</div>
+					<div class="template-layout-column-right">
+						<h6>Contact</h6>
+						<p>Phone: (555) 123-4567<br/>Email: info@autospa.com</p>
+					</div>
+				</div>
+			</div>
+			<div class="template-footer-bottom">
+				<ul class="template-component-social-icon-list template-component-social-icon-list-2">
+					<li><a href="#" class="template-icon-social-twitter" target="_blank"></a></li>
+					<li><a href="#" class="template-icon-social-facebook" target="_blank"></a></li>
+				</ul>
+				<div class="template-footer-bottom-copyright">
+					&copy; 2024 AutoSpa Car Wash
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Go to top button -->
+	<a href="#go-to-top" class="template-component-go-to-top template-icon-meta-arrow-large-tb"></a>
+	
+	<!-- JS files -->
+	<script type="text/javascript" src="script/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="script/superfish.min.js"></script>
+	<script type="text/javascript" src="script/jquery.easing.js"></script>
+	<script type="text/javascript" src="script/jquery.blockUI.js"></script>
+	<script type="text/javascript" src="script/jquery.qtip.min.js"></script>
+	<script type="text/javascript" src="script/jquery.flexnav.min.js"></script>
+	<script type="text/javascript" src="script/jquery.waypoints.min.js"></script>
+	<script type="text/javascript" src="script/sticky.min.js"></script>
+	<script type="text/javascript" src="script/jquery.scrollTo.min.js"></script>
+	<script type="text/javascript" src="script/jquery.responsiveElement.js"></script>
+	
+	<!-- Plugins files -->
+	<script type="text/javascript" src="plugin/contact-form/jquery.contactForm.js"></script>
+	
+	<!-- Components files -->
+	<script type="text/javascript" src="script/template/jquery.template.helper.js"></script>
+	<script type="text/javascript" src="script/template/jquery.template.header.js"></script>
+	<script type="text/javascript" src="script/template/jquery.template.goToTop.js"></script>
+	<script type="text/javascript" src="script/public.js"></script>
+	<script>
+		jQuery('.template-component-contact-form').on('submit', function(e) {
+			e.preventDefault();
+			alert('Thank you! Your booking has been received. We will contact you shortly to confirm.');
+			this.reset();
+		});
+	</script>
+
+</body>
+		
+</html>
