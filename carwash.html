@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CarShine Car Wash – Premium Auto Detailing</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #007BFF;
+    --navy: #0d1b2a;
+    --orange: #FF6B00;
+    --white: #FFFFFF;
+    --gray: #F4F7F6;
+    --glass: rgba(255,255,255,0.08);
+    --glass-border: rgba(255,255,255,0.15);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
+
+  /* NAVBAR */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 60px;
+    background: rgba(13,27,42,0.85); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border); transition: background 0.3s;
+  }
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; height: 45px; }
+  .logo img { height: 100%; width: auto; }
+  .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 3px; color: var(--white); }
+  .logo-text span { color: var(--blue); }
+  nav ul { display: flex; gap: 35px; list-style: none; }
+  nav ul a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.5px; transition: color 0.3s; }
+  nav ul a:hover { color: var(--white); }
+  .nav-cta { background: var(--blue); color: var(--white) !important; padding: 10px 24px; border-radius: 50px; font-weight: 600 !important; transition: transform 0.2s, box-shadow 0.2s !important; }
+  .nav-cta:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0,123,255,0.5); }
+  .mobile-menu-btn { display: none; background: none; border: none; color: var(--white); font-size: 1.8rem; cursor: pointer; padding: 5px; }
+  .mobile-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; background: rgba(13,27,42,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 20px; z-index: 999; }
+  .mobile-menu.active { display: block; }
+  .mobile-menu ul { list-style: none; }
+  .mobile-menu li { margin-bottom: 15px; }
+  .mobile-menu a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1.1rem; font-weight: 500; display: block; padding: 10px; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    position: relative; overflow: hidden; padding: 120px 60px 80px;
+    background: linear-gradient(135deg, #0d1b2a 0%, #1a2e44 60%, #0d1b2a 100%);
+  }
+  .hero-video {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover; z-index: 0; opacity: 0.3;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(0,123,255,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(255,107,0,0.08) 0%, transparent 50%);
+  }
+  .drops { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; overflow: hidden; }
+  .drop {
+    position: absolute; width: 3px; height: 12px;
+    background: linear-gradient(to bottom, transparent, rgba(0,123,255,0.5));
+    border-radius: 2px; animation: fall linear infinite;
+  }
+  @keyframes fall { 0% { transform: translateY(-20px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 0.4; } 100% { transform: translateY(110vh); opacity: 0; } }
+  .hero-content { position: relative; z-index: 2; max-width: 620px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,123,255,0.15); border: 1px solid rgba(0,123,255,0.3);
+    padding: 8px 18px; border-radius: 50px; font-size: 0.78rem; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 28px; color: #7ec8ff;
+  }
+  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); line-height: 0.95; letter-spacing: 2px; margin-bottom: 24px; }
+  .hero h1 span { color: var(--blue); }
+  .hero p { font-size: 1.05rem; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 38px; max-width: 460px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { background: var(--blue); color: white; padding: 16px 36px; border-radius: 50px; font-weight: 600; font-size: 1rem; border: none; cursor: pointer; text-decoration: none; display: inline-block; transition: transform 0.2s, box-shadow 0.3s; box-shadow: 0 4px 20px rgba(0,123,255,0.4); }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,123,255,0.6); }
+  .btn-ghost { background: transparent; color: white; padding: 16px 36px; border-radius: 50px; font-weight: 500; font-size: 1rem; border: 1px solid rgba(255,255,255,0.25); cursor: pointer; text-decoration: none; display: inline-block; transition: border-color 0.3s, background 0.3s; }
+  .btn-ghost:hover { border-color: white; background: rgba(255,255,255,0.05); }
+  .hero-stats { display: flex; gap: 40px; margin-top: 60px; }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--white); line-height: 1; }
+  .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1px; }
+  .car-graphic { position: absolute; right: 60px; bottom: 80px; width: 480px; opacity: 0.55; animation: float 4s ease-in-out infinite; z-index: 1; }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+
+  /* TRUST BAR */
+  .trust-bar { background: rgba(255,255,255,0.03); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 20px 60px; display: flex; align-items: center; justify-content: center; gap: 50px; flex-wrap: wrap; }
+  .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: rgba(255,255,255,0.5); font-weight: 500; }
+
+  /* SECTION TITLES */
+  .section-title { text-align: center; margin-bottom: 56px; }
+  .section-tag { display: inline-block; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+  .section-title h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 2px; line-height: 1; }
+  .section-title p { color: rgba(255,255,255,0.5); margin-top: 12px; font-size: 1rem; }
+
+  /* SERVICES */
+  .services { padding: 100px 60px; }
+  .cards-grid { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
+  .card { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px 30px; width: 320px; text-align: center; position: relative; opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.3s; }
+  .card.visible { opacity: 1; transform: translateY(0); }
+  .card:hover { transform: translateY(-10px) !important; border-color: rgba(0,123,255,0.4); }
+  .card.featured { border-color: var(--blue); background: rgba(0,123,255,0.12); transform: scale(1.04) translateY(0); opacity: 0; }
+  .card.featured.visible { opacity: 1; transform: scale(1.04); }
+  .card.featured:hover { transform: scale(1.04) translateY(-10px) !important; }
+  .badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--blue); padding: 5px 18px; border-radius: 50px; font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+  .card-icon { width: 62px; height: 62px; background: rgba(0,123,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 1.7rem; }
+  .card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 2px; margin-bottom: 4px; }
+  .card .tagline { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-bottom: 18px; }
+  .price { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; line-height: 1; margin-bottom: 4px; }
+  .price sup { font-size: 1.4rem; vertical-align: super; color: rgba(255,255,255,0.6); }
+  .per { font-size: 0.78rem; color: rgba(255,255,255,0.38); margin-bottom: 26px; }
+  .card ul { list-style: none; margin-bottom: 30px; text-align: left; }
+  .card li { padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.07); font-size: 0.88rem; color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 10px; }
+  .card li::before { content: '✓'; color: var(--blue); font-weight: 700; font-size: 0.8rem; flex-shrink: 0; }
+  .card button { width: 100%; padding: 14px; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; border: 2px solid var(--blue); background: transparent; color: var(--blue); transition: background 0.3s, color 0.3s; }
+  .card.featured button { background: var(--blue); color: white; }
+  .card button:hover { background: var(--blue); color: white; }
+  .card:nth-child(1) { transition-delay: 0s; }
+  .card:nth-child(2) { transition-delay: 0.15s; }
+  .card:nth-child(3) { transition-delay: 0.3s; }
+
+  /* BEFORE/AFTER */
+  .before-after-section { padding: 100px 60px; background: rgba(255,255,255,0.02); }
+  .slider-container { position: relative; width: 100%; max-width: 700px; aspect-ratio: 16/9; margin: 0 auto 40px; overflow: hidden; border-radius: 20px; box-shadow: 0 30px 80px rgba(0,0,0,0.5); cursor: ew-resize; user-select: none; }
+  .img-fill { width: 100%; height: 100%; }
+  .after-panel { position: absolute; inset: 0; }
+  .before-panel { position: absolute; top: 0; left: 0; height: 100%; width: 50%; overflow: hidden; z-index: 2; }
+  .before-inner { position: relative; width: 700px; height: 100%; max-width: none; }
+  @media (max-width: 900px) {
+    .before-inner { width: 100vw; max-width: 700px; }
+  }
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+  .gallery-item { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; cursor: ew-resize; user-select: none; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+  .gallery-item .after-panel { position: absolute; inset: 0; }
+  .gallery-item .before-panel { position: absolute; top: 0; left: 0; height: 100%; width: 50%; overflow: hidden; z-index: 2; }
+  .gallery-item .before-inner { position: relative; width: 100%; height: 100%; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+  .gallery-item .before-inner img { width: 200%; height: 100%; }
+  .gallery-item .slider-line { position: absolute; top: 0; left: 50%; width: 2px; height: 100%; background: white; z-index: 5; transform: translateX(-50%); pointer-events: none; }
+  .gallery-item .slider-knob { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 36px; height: 36px; background: white; border-radius: 50%; z-index: 6; pointer-events: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.4); color: var(--navy); font-size: 0.9rem; font-weight: 700; }
+  .gallery-item .range-slider { position: absolute; inset: 0; width: 100%; height: 100%; -webkit-appearance: none; appearance: none; background: transparent; outline: none; cursor: ew-resize; z-index: 10; opacity: 0; }
+  .gallery-item .before-label, .gallery-item .after-label { position: absolute; top: 12px; padding: 4px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; z-index: 10; }
+  .gallery-item .before-label { left: 12px; background: rgba(0,0,0,0.7); color: white; }
+  .gallery-item .after-label { right: 12px; background: rgba(0,123,255,0.85); color: white; }
+  .before-label, .after-label { position: absolute; top: 18px; padding: 5px 14px; border-radius: 6px; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; z-index: 10; }
+  .before-label { left: 18px; background: rgba(0,0,0,0.6); }
+  .after-label { right: 18px; background: rgba(0,123,255,0.85); }
+  .slider-line { position: absolute; top: 0; left: 50%; width: 3px; height: 100%; background: white; z-index: 5; transform: translateX(-50%); pointer-events: none; }
+  .slider-knob { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 46px; height: 46px; background: white; border-radius: 50%; z-index: 6; pointer-events: none; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 18px rgba(0,0,0,0.5); color: var(--navy); font-size: 1.1rem; font-weight: 700; }
+  .range-slider { position: absolute; inset: 0; width: 100%; height: 100%; -webkit-appearance: none; appearance: none; background: transparent; outline: none; cursor: ew-resize; z-index: 10; opacity: 0; }
+
+  /* WHY US */
+  .why-us { padding: 100px 60px; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 26px; max-width: 1100px; margin: 0 auto; }
+  .feature-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; padding: 32px 26px; opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s; }
+  .feature-card.visible { opacity: 1; transform: translateY(0); }
+  .feature-card:hover { border-color: rgba(0,123,255,0.3); }
+  .feature-icon { font-size: 2.2rem; margin-bottom: 16px; }
+  .feature-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 10px; }
+  .feature-card p { font-size: 0.86rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+  .feature-card:nth-child(1) { transition-delay: 0s; }
+  .feature-card:nth-child(2) { transition-delay: 0.1s; }
+  .feature-card:nth-child(3) { transition-delay: 0.2s; }
+  .feature-card:nth-child(4) { transition-delay: 0.3s; }
+
+  /* BOOKING */
+  .booking-section { padding: 100px 60px; background: rgba(255,255,255,0.02); display: flex; justify-content: center; }
+  .booking-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 980px; width: 100%; align-items: center; }
+  .booking-info h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 4vw, 3.8rem); letter-spacing: 2px; line-height: 1; margin-bottom: 18px; }
+  .booking-info p { color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 28px; font-size: 0.95rem; }
+  .trust-note { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: rgba(255,255,255,0.45); background: rgba(0,123,255,0.08); padding: 12px 18px; border-radius: 10px; border: 1px solid rgba(0,123,255,0.15); }
+  .booking-card { background: var(--white); color: var(--navy); padding: 38px; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.35); }
+  .booking-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 2px; margin-bottom: 22px; color: var(--navy); }
+  .form-group { margin-bottom: 16px; display: flex; flex-direction: column; }
+  .form-row { display: flex; gap: 14px; }
+  .form-row .form-group { flex: 1; }
+  label { font-size: 0.78rem; font-weight: 600; color: #6b7280; margin-bottom: 7px; letter-spacing: 0.5px; text-transform: uppercase; }
+  input, select { padding: 11px 13px; border: 2px solid #e5e7eb; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.93rem; color: var(--navy); background: white; transition: border-color 0.3s; }
+  input:focus, select:focus { outline: none; border-color: var(--blue); }
+  .submit-btn { background: var(--blue); color: white; border: none; padding: 15px; width: 100%; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 4px; transition: background 0.3s, transform 0.2s; letter-spacing: 0.5px; }
+  .submit-btn:hover { background: #0056b3; transform: translateY(-1px); }
+  .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spinner { display: inline-block; width: 15px; height: 15px; border: 2px solid white; border-top-color: transparent; border-radius: 50%; animation: spin 0.7s linear infinite; vertical-align: middle; margin-right: 8px; }
+  .form-status { display: none; text-align: center; padding: 20px 0; }
+  .form-status.visible { display: block; }
+
+  /* TESTIMONIALS */
+  .testimonials { padding: 100px 60px; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 22px; max-width: 1100px; margin: 0 auto; }
+  .testimonial { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .testimonial.visible { opacity: 1; transform: translateY(0); }
+  .testimonial:nth-child(1) { transition-delay: 0s; }
+  .testimonial:nth-child(2) { transition-delay: 0.15s; }
+  .testimonial:nth-child(3) { transition-delay: 0.3s; }
+  .stars { color: #FFB800; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 14px; }
+  .testimonial blockquote { font-size: 0.93rem; color: rgba(255,255,255,0.7); line-height: 1.7; font-style: italic; margin-bottom: 20px; }
+  .reviewer { display: flex; align-items: center; gap: 12px; }
+  .avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), #0056b3); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.95rem; flex-shrink: 0; }
+  .reviewer-info strong { font-size: 0.88rem; display: block; }
+  .reviewer-info span { font-size: 0.78rem; color: rgba(255,255,255,0.42); }
+
+  /* FOOTER */
+  footer { background: #080f18; border-top: 1px solid var(--glass-border); padding: 60px 60px 28px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+  .footer-brand p { color: rgba(255,255,255,0.38); font-size: 0.86rem; line-height: 1.7; margin-top: 14px; max-width: 270px; }
+  .footer-col h5 { font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 18px; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  .footer-col a { color: rgba(255,255,255,0.58); text-decoration: none; font-size: 0.88rem; transition: color 0.3s; }
+  .footer-col a:hover { color: var(--white); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 22px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+  .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.28); }
+  .socials { display: flex; gap: 12px; }
+  .socials a { width: 36px; height: 36px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: background 0.3s, color 0.3s, border-color 0.3s; }
+  .socials a:hover { background: var(--blue); color: white; border-color: var(--blue); }
+
+  /* PHONE CTA */
+  .phone-bar { position: fixed; bottom: 24px; right: 24px; z-index: 999; }
+  .phone-btn { display: flex; align-items: center; gap: 10px; background: var(--orange); color: white; padding: 14px 22px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.88rem; box-shadow: 0 8px 30px rgba(255,107,0,0.5); transition: transform 0.2s; animation: pulse-o 2.5s infinite; }
+  @keyframes pulse-o { 0%,100% { box-shadow: 0 8px 30px rgba(255,107,0,0.5); } 50% { box-shadow: 0 8px 40px rgba(255,107,0,0.9); } }
+  .phone-btn:hover { transform: scale(1.05); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 20px; }
+    nav ul { display: none; }
+    .mobile-menu-btn { display: block; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-video { width: 100%; opacity: 0.15; }
+    .car-graphic { display: none; }
+    .trust-bar { padding: 20px; gap: 24px; }
+    .services, .before-after-section, .why-us, .booking-section, .testimonials { padding: 70px 24px; }
+    .booking-wrapper { grid-template-columns: 1fr; gap: 36px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { flex-direction: column; }
+    .hero-stats { flex-wrap: wrap; gap: 30px; }
+    .logo img { height: 35px; }
+    .logo-text { font-size: 1.5rem; }
+  }
+  @media (max-width: 540px) {
+    .hero h1 { font-size: 3rem; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 26px; }
+    .trust-bar { flex-direction: column; gap: 16px; }
+    .phone-btn { padding: 12px 18px; font-size: 0.8rem; }
+    .phone-bar { bottom: 16px; right: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="logo"><img src="assets/logo.png" alt="CarShine"><span class="logo-text">Car<span>Shine</span></span></a>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#before-after">Gallery</a></li>
+    <li><a href="#why-us">Why Us</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#booking" class="nav-cta">Book Now</a></li>
+  </ul>
+  <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()">☰</button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#services" onclick="toggleMobileMenu()">Services</a></li>
+    <li><a href="#before-after" onclick="toggleMobileMenu()">Gallery</a></li>
+    <li><a href="#why-us" onclick="toggleMobileMenu()">Why Us</a></li>
+    <li><a href="#testimonials" onclick="toggleMobileMenu()">Reviews</a></li>
+    <li><a href="#booking" class="nav-cta" onclick="toggleMobileMenu()">Book Now</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="assets/wash.mp4" type="video/mp4">
+  </video>
+  <div class="drops" id="drops"></div>
+  <div class="hero-content">
+    <div class="hero-badge">⬤ &nbsp;Premium Auto Detailing</div>
+    <h1>Your Car<br>Deserves the<br><span>Best Shine</span></h1>
+    <p>Professional hand-washing and detailing that leaves your vehicle spotless. Eco-friendly products, crafted results, satisfaction guaranteed.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-primary">Book Your Wash</a>
+      <a href="#before-after" class="btn-ghost">See Our Work</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">4.9★</div><div class="stat-label">Customer Rating</div></div>
+      <div><div class="stat-num">12K+</div><div class="stat-label">Cars Washed</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-label">Satisfaction</div></div>
+    </div>
+  </div>
+
+  <!-- SVG Car Illustration -->
+  <svg class="car-graphic" viewBox="0 0 640 370" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="80" y="185" width="480" height="100" rx="18" fill="rgba(0,123,255,0.28)" stroke="rgba(0,123,255,0.55)" stroke-width="2"/>
+    <path d="M185 185 L225 105 L415 105 L455 185Z" fill="rgba(0,123,255,0.22)" stroke="rgba(0,123,255,0.45)" stroke-width="2"/>
+    <rect x="235" y="112" width="78" height="65" rx="5" fill="rgba(255,255,255,0.13)" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+    <rect x="323" y="112" width="82" height="65" rx="5" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
+    <circle cx="190" cy="295" r="48" fill="#0a1420" stroke="rgba(255,255,255,0.18)" stroke-width="2.5"/>
+    <circle cx="190" cy="295" r="28" fill="rgba(0,123,255,0.35)" stroke="rgba(0,123,255,0.6)" stroke-width="2"/>
+    <circle cx="450" cy="295" r="48" fill="#0a1420" stroke="rgba(255,255,255,0.18)" stroke-width="2.5"/>
+    <circle cx="450" cy="295" r="28" fill="rgba(0,123,255,0.35)" stroke="rgba(0,123,255,0.6)" stroke-width="2"/>
+    <circle cx="535" cy="214" r="20" fill="rgba(255,225,100,0.2)"/><circle cx="535" cy="214" r="10" fill="rgba(255,225,100,0.5)"/>
+    <!-- Water drops -->
+    <ellipse cx="290" cy="142" rx="4" ry="6.5" fill="rgba(100,200,255,0.6)"/>
+    <ellipse cx="340" cy="160" rx="3.5" ry="5.5" fill="rgba(100,200,255,0.5)"/>
+    <ellipse cx="260" cy="155" rx="3" ry="5" fill="rgba(100,200,255,0.45)"/>
+    <ellipse cx="380" cy="145" rx="2.5" ry="4.5" fill="rgba(100,200,255,0.4)"/>
+    <ellipse cx="410" cy="168" rx="2" ry="3.5" fill="rgba(100,200,255,0.35)"/>
+    <!-- Shine marks -->
+    <line x1="195" y1="162" x2="224" y2="148" stroke="rgba(255,255,255,0.45)" stroke-width="2"/>
+    <line x1="305" y1="152" x2="330" y2="140" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+    <line x1="380" y1="155" x2="400" y2="144" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+  </svg>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">🌿 Eco-Friendly Products</div>
+  <div class="trust-item">🤲 Hand-Wash Only</div>
+  <div class="trust-item">⏱️ 30-Minute Service</div>
+  <div class="trust-item">🛡️ Satisfaction Guaranteed</div>
+  <div class="trust-item">🏆 Certified Specialists</div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-title">
+    <span class="section-tag">Our Packages</span>
+    <h2>Choose Your Clean</h2>
+    <p>From a quick refresh to a full transformation — we've got you covered.</p>
+  </div>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon">💧</div>
+      <h3>Express Wash</h3>
+      <div class="tagline">Quick & clean</div>
+      <div class="price"><sup>$</sup>25</div>
+      <div class="per">per wash</div>
+      <ul>
+        <li>Exterior hand wash</li>
+        <li>Wheel cleaning</li>
+        <li>Tire shine</li>
+        <li>Streak-free dry</li>
+      </ul>
+      <button onclick="selectService('express')">Book Express</button>
+    </div>
+    <div class="card featured">
+      <span class="badge">Most Popular</span>
+      <div class="card-icon">✨</div>
+      <h3>Full Detail</h3>
+      <div class="tagline">Our best seller</div>
+      <div class="price"><sup>$</sup>85</div>
+      <div class="per">per session</div>
+      <ul>
+        <li>Everything in Express</li>
+        <li>Full interior vacuum</li>
+        <li>Leather conditioning</li>
+        <li>Hand wax & polish</li>
+        <li>Odor elimination</li>
+      </ul>
+      <button onclick="selectService('detail')">Book Detail</button>
+    </div>
+    <div class="card">
+      <div class="card-icon">🛡️</div>
+      <h3>Premium Ceramic</h3>
+      <div class="tagline">Ultimate protection</div>
+      <div class="price"><sup>$</sup>150</div>
+      <div class="per">per treatment</div>
+      <ul>
+        <li>Everything in Detail</li>
+        <li>Ceramic nano-coating</li>
+        <li>Engine bay clean</li>
+        <li>Paint correction</li>
+      </ul>
+      <button onclick="selectService('ceramic')">Book Premium</button>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="before-after-section" id="before-after">
+  <div class="section-title">
+    <span class="section-tag">Our Work</span>
+    <h2>See the Difference</h2>
+    <p>Drag the slider to see the transformation. Same car, same angle — just our work in between.</p>
+  </div>
+
+  <div class="slider-container" id="sliderContainer">
+    <!-- AFTER (clean) -->
+    <div class="after-panel">
+      <img src="assets/washed-car-1.jpg" alt="After - Clean Car" class="img-fill" style="object-fit: cover;">
+    </div>
+
+    <!-- BEFORE (dirty) -->
+    <div class="before-panel" id="beforePanel">
+      <div class="before-inner">
+        <img src="assets/dirty-car-1.webp" alt="Before - Dirty Car" style="width:700px;height:100%;object-fit:cover;">
+      </div>
+    </div>
+
+    <span class="before-label">BEFORE</span>
+    <span class="after-label">AFTER</span>
+    <div class="slider-line" id="sliderLine"></div>
+    <div class="slider-knob" id="sliderKnob">⇔</div>
+    <input type="range" class="range-slider" id="baSlider" min="0" max="100" value="50">
+  </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item" id="gallery1">
+      <div class="after-panel">
+        <img src="assets/washed-car-2.jpeg" alt="After">
+      </div>
+      <div class="before-panel" id="galleryBefore1">
+        <div class="before-inner">
+          <img src="assets/dirty-car-2.jpg" alt="Before">
+        </div>
+      </div>
+      <span class="before-label">BEFORE</span>
+      <span class="after-label">AFTER</span>
+      <div class="slider-line" id="galleryLine1"></div>
+      <div class="slider-knob" id="galleryKnob1">⇔</div>
+      <input type="range" class="range-slider" id="gallerySlider1" min="0" max="100" value="50">
+    </div>
+    <div class="gallery-item" id="gallery2">
+      <div class="after-panel">
+        <img src="assets/washed-car-3.jpeg" alt="After">
+      </div>
+      <div class="before-panel" id="galleryBefore2">
+        <div class="before-inner">
+          <img src="assets/dirty-car-3.jpeg" alt="Before">
+        </div>
+      </div>
+      <span class="before-label">BEFORE</span>
+      <span class="after-label">AFTER</span>
+      <div class="slider-line" id="galleryLine2"></div>
+      <div class="slider-knob" id="galleryKnob2">⇔</div>
+      <input type="range" class="range-slider" id="gallerySlider2" min="0" max="100" value="50">
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us" id="why-us">
+  <div class="section-title">
+    <span class="section-tag">Why CarShine</span>
+    <h2>Built Different</h2>
+    <p>We're not just a car wash. We're a detail-obsessed team that treats every car like our own.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🌿</div>
+      <h4>Eco-Friendly</h4>
+      <p>We use biodegradable, pH-neutral soaps that are tough on dirt but gentle on the planet and your paint.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🤲</div>
+      <h4>Hand Wash Only</h4>
+      <p>No harsh machines. Every surface is hand-washed by our trained specialists using premium microfiber cloths.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h4>30-Min Turnaround</h4>
+      <p>Our express service is designed for busy people. In and out in 30 minutes — quality and speed, delivered.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🛡️</div>
+      <h4>Satisfaction Guaranteed</h4>
+      <p>Not happy with the result? We'll redo it at no charge. No questions asked. That's our commitment to you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking-section" id="booking">
+  <div class="booking-wrapper">
+    <div class="booking-info">
+      <span class="section-tag">Make a Reservation</span>
+      <h2>Ready for a<br>Fresh Clean?</h2>
+      <p>Pick your package, choose a time that works for you, and leave the rest to us. Our team will confirm within 15 minutes.</p>
+      <div class="trust-note">🔒 No payment required today. Pay at the wash.</div>
+    </div>
+    <div class="booking-card">
+      <h3>Book Your Wash</h3>
+      <form id="carwash-booking">
+        <div class="form-group">
+          <label for="service">Service Package</label>
+          <select id="service" required>
+            <option value="" disabled selected>Choose a package...</option>
+            <option value="express">Express Wash — $25</option>
+            <option value="detail">Full Detail — $85</option>
+            <option value="ceramic">Premium Ceramic — $150</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" required>
+          </div>
+          <div class="form-group">
+            <label for="time">Time</label>
+            <select id="time" required>
+              <option value="09:00">9:00 AM</option>
+              <option value="11:00">11:00 AM</option>
+              <option value="13:00">1:00 PM</option>
+              <option value="15:00">3:00 PM</option>
+              <option value="17:00">5:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="John Smith" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="(123) 456-7890" required>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">Confirm Appointment</button>
+      </form>
+      <div class="form-status" id="formStatus">
+        <div style="font-size:3rem;margin-bottom:10px;">✅</div>
+        <h3 style="color:#16a34a;font-family:'Bebas Neue';font-size:1.6rem;letter-spacing:2px;">Booking Confirmed!</h3>
+        <p style="color:#6b7280;font-size:0.9rem;margin-top:8px;">We'll send you a reminder text 1 hour before your appointment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-title">
+    <span class="section-tag">Happy Customers</span>
+    <h2>What They Say</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <blockquote>"I've tried 4 different car washes in the city. CarShine is on another level. My 10-year-old car looks brand new every single time."</blockquote>
+      <div class="reviewer">
+        <div class="avatar">MK</div>
+        <div class="reviewer-info"><strong>Marcus K.</strong><span>Full Detail Customer</span></div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Booked online in 2 minutes, dropped off my car, grabbed a coffee, and came back to a spotless vehicle. Exactly what I needed."</blockquote>
+      <div class="reviewer">
+        <div class="avatar">SL</div>
+        <div class="reviewer-info"><strong>Sarah L.</strong><span>Express Wash Customer</span></div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <blockquote>"The ceramic coating is incredible. Water just rolls right off, and it's been 6 months. Worth every penny. True professionals."</blockquote>
+      <div class="reviewer">
+        <div class="avatar">JR</div>
+        <div class="reviewer-info"><strong>James R.</strong><span>Premium Ceramic Customer</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo"><img src="assets/logo.png" alt="CarShine"><span class="logo-text">Car<span>Shine</span></span></a>
+      <p>Premium car washing and detailing services. We treat your vehicle with the care it deserves, using eco-friendly methods and expert hands.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Express Wash</a></li>
+        <li><a href="#services">Full Detail</a></li>
+        <li><a href="#services">Premium Ceramic</a></li>
+        <li><a href="#booking">Fleet Services</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Hours</h5>
+      <ul>
+        <li><a href="#">Mon–Fri: 8am – 7pm</a></li>
+        <li><a href="#">Saturday: 8am – 6pm</a></li>
+        <li><a href="#">Sunday: 10am – 4pm</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 CarShine Car Wash. All rights reserved.</p>
+    <div class="socials">
+      <a href="#" title="Instagram">📷</a>
+      <a href="#" title="Facebook">📘</a>
+      <a href="#" title="TikTok">🎵</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Phone Button -->
+<div class="phone-bar">
+  <a href="tel:+250784809323" class="phone-btn">📞 Call Now</a>
+</div>
+
+<script>
+  // === RAIN DROPS ===
+  const dropsEl = document.getElementById('drops');
+  for (let i = 0; i < 28; i++) {
+    const d = document.createElement('div');
+    d.className = 'drop';
+    d.style.cssText = `left:${Math.random()*100}%;animation-duration:${2+Math.random()*3}s;animation-delay:${Math.random()*5}s;height:${8+Math.random()*10}px;opacity:${0.2+Math.random()*0.4}`;
+    dropsEl.appendChild(d);
+  }
+
+  // === BEFORE/AFTER SLIDER ===
+  const baSlider = document.getElementById('baSlider');
+  const beforePanel = document.getElementById('beforePanel');
+  const sliderLine = document.getElementById('sliderLine');
+  const sliderKnob = document.getElementById('sliderKnob');
+
+  function updateBA(val) {
+    beforePanel.style.width = val + '%';
+    sliderLine.style.left = val + '%';
+    sliderKnob.style.left = val + '%';
+    sliderKnob.style.transform = `translate(-50%, -50%)`;
+  }
+
+  baSlider.addEventListener('input', e => updateBA(e.target.value));
+  sliderKnob.style.position = 'absolute';
+  sliderKnob.style.top = '50%';
+  updateBA(50);
+
+  // === GALLERY SLIDERS ===
+  function setupGallerySlider(num) {
+    const slider = document.getElementById(`gallerySlider${num}`);
+    const panel = document.getElementById(`galleryBefore${num}`);
+    const line = document.getElementById(`galleryLine${num}`);
+    const knob = document.getElementById(`galleryKnob${num}`);
+    
+    function update(val) {
+      panel.style.width = val + '%';
+      line.style.left = val + '%';
+      knob.style.left = val + '%';
+    }
+    
+    slider.addEventListener('input', e => update(e.target.value));
+    update(50);
+  }
+  
+  setupGallerySlider(1);
+  setupGallerySlider(2);
+
+  // === SCROLL REVEAL ===
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.card, .feature-card, .testimonial').forEach(el => observer.observe(el));
+
+  // === DATE MIN ===
+  document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+  // === PHONE FORMAT ===
+  document.getElementById('phone').addEventListener('input', function() {
+    let v = this.value.replace(/\D/g,'');
+    if (v.length >= 6) v = `(${v.slice(0,3)}) ${v.slice(3,6)}-${v.slice(6,10)}`;
+    else if (v.length >= 3) v = `(${v.slice(0,3)}) ${v.slice(3)}`;
+    this.value = v;
+  });
+
+  // === BOOKING FORM ===
+  document.getElementById('carwash-booking').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.innerHTML = '<span class="spinner"></span>Booking...';
+    btn.disabled = true;
+    setTimeout(() => {
+      this.style.display = 'none';
+      document.getElementById('formStatus').classList.add('visible');
+    }, 1800);
+  });
+
+  // === SELECT SERVICE FROM CARDS ===
+  function selectService(val) {
+    document.getElementById('service').value = val;
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // === STICKY NAV ===
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').style.background = window.scrollY > 50
+      ? 'rgba(13,27,42,0.98)' : 'rgba(13,27,42,0.85)';
+  });
+
+  // === MOBILE MENU ===
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('mobileMenuBtn');
+    menu.classList.toggle('active');
+    btn.textContent = menu.classList.contains('active') ? '✕' : '☰';
+  }
+</script>
+</body>
+</html>
