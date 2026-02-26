@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CarShine Car Wash – Premium Auto Detailing</title>
 <link rel="icon" type="image/png" href="assets/logo.png">
+<script src="translations.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -275,7 +276,7 @@
   <div class="nav-right">
     <div class="lang-switcher">
       <button class="lang-btn active" onclick="switchLang('en')">EN</button>
-      <button class="lang-btn" onclick="switchLang('fr')">FR</button>
+      <button class="lang-btn" onclick="switchLang('rw')">RW</button>
     </div>
     <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()">☰</button>
   </div>
@@ -284,11 +285,11 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <ul>
-    <li><a href="#services" onclick="toggleMobileMenu()">Services</a></li>
-    <li><a href="#before-after" onclick="toggleMobileMenu()">Gallery</a></li>
-    <li><a href="#why-us" onclick="toggleMobileMenu()">Why Us</a></li>
-    <li><a href="#testimonials" onclick="toggleMobileMenu()">Reviews</a></li>
-    <li><a href="#booking" class="nav-cta" onclick="toggleMobileMenu()">Book Now</a></li>
+    <li><a href="#services" onclick="toggleMobileMenu()" data-i18n="nav.services">Services</a></li>
+    <li><a href="#before-after" onclick="toggleMobileMenu()" data-i18n="nav.gallery">Gallery</a></li>
+    <li><a href="#why-us" onclick="toggleMobileMenu()" data-i18n="nav.whyus">Why Us</a></li>
+    <li><a href="#testimonials" onclick="toggleMobileMenu()" data-i18n="nav.reviews">Reviews</a></li>
+    <li><a href="#booking" class="nav-cta" onclick="toggleMobileMenu()" data-i18n="nav.book">Book Now</a></li>
   </ul>
 </div>
 
@@ -307,9 +308,9 @@
       <a href="#before-after" class="btn-ghost" data-i18n="hero.btn2">See Our Work</a>
     </div>
     <div class="hero-stats">
-      <div><div class="stat-num">4.9★</div><div class="stat-label">Customer Rating</div></div>
-      <div><div class="stat-num">12K+</div><div class="stat-label">Cars Washed</div></div>
-      <div><div class="stat-num">100%</div><div class="stat-label">Satisfaction</div></div>
+      <div><div class="stat-num">4.9★</div><div class="stat-label" data-i18n="hero.stat1">Customer Rating</div></div>
+      <div><div class="stat-num">12K+</div><div class="stat-label" data-i18n="hero.stat2">Cars Washed</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-label" data-i18n="hero.stat3">Satisfaction</div></div>
     </div>
   </div>
 
@@ -339,64 +340,64 @@
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
-  <div class="trust-item">🌿 Eco-Friendly Products</div>
-  <div class="trust-item">🤲 Hand-Wash Only</div>
-  <div class="trust-item">⏱️ 30-Minute Service</div>
-  <div class="trust-item">🛡️ Satisfaction Guaranteed</div>
-  <div class="trust-item">🏆 Certified Specialists</div>
+  <div class="trust-item" data-i18n="trust.1">🌿 Eco-Friendly Products</div>
+  <div class="trust-item" data-i18n="trust.2">🤲 Hand-Wash Only</div>
+  <div class="trust-item" data-i18n="trust.3">⏱️ 30-Minute Service</div>
+  <div class="trust-item" data-i18n="trust.4">🛡️ Satisfaction Guaranteed</div>
+  <div class="trust-item" data-i18n="trust.5">🏆 Certified Specialists</div>
 </div>
 
 <!-- SERVICES -->
 <section class="services" id="services">
   <div class="section-title">
-    <span class="section-tag">Our Packages</span>
-    <h2>Choose Your Clean</h2>
-    <p>From a quick refresh to a full transformation — we've got you covered.</p>
+    <span class="section-tag" data-i18n="services.tag">Our Packages</span>
+    <h2 data-i18n="services.title">Choose Your Clean</h2>
+    <p data-i18n="services.desc">From a quick refresh to a full transformation — we've got you covered.</p>
   </div>
   <div class="cards-grid">
     <div class="card">
       <div class="card-icon">💧</div>
-      <h3>Express Wash</h3>
-      <div class="tagline">Quick & clean</div>
+      <h3 data-i18n="service1.name">Express Wash</h3>
+      <div class="tagline" data-i18n="service1.tagline">Quick & clean</div>
       <div class="price"><sup>$</sup>25</div>
-      <div class="per">per wash</div>
+      <div class="per" data-i18n="service1.per">per wash</div>
       <ul>
-        <li>Exterior hand wash</li>
-        <li>Wheel cleaning</li>
-        <li>Tire shine</li>
-        <li>Streak-free dry</li>
+        <li data-i18n="service1.feat1">Exterior hand wash</li>
+        <li data-i18n="service1.feat2">Wheel cleaning</li>
+        <li data-i18n="service1.feat3">Tire shine</li>
+        <li data-i18n="service1.feat4">Streak-free dry</li>
       </ul>
-      <button onclick="selectService('express')">Book Express</button>
+      <button onclick="selectService('express')" data-i18n="service1.btn">Book Express</button>
     </div>
     <div class="card featured">
-      <span class="badge">Most Popular</span>
+      <span class="badge" data-i18n="service2.badge">Most Popular</span>
       <div class="card-icon">✨</div>
-      <h3>Full Detail</h3>
-      <div class="tagline">Our best seller</div>
+      <h3 data-i18n="service2.name">Full Detail</h3>
+      <div class="tagline" data-i18n="service2.tagline">Our best seller</div>
       <div class="price"><sup>$</sup>85</div>
-      <div class="per">per session</div>
+      <div class="per" data-i18n="service2.per">per session</div>
       <ul>
-        <li>Everything in Express</li>
-        <li>Full interior vacuum</li>
-        <li>Leather conditioning</li>
-        <li>Hand wax & polish</li>
-        <li>Odor elimination</li>
+        <li data-i18n="service2.feat1">Everything in Express</li>
+        <li data-i18n="service2.feat2">Full interior vacuum</li>
+        <li data-i18n="service2.feat3">Leather conditioning</li>
+        <li data-i18n="service2.feat4">Hand wax & polish</li>
+        <li data-i18n="service2.feat5">Odor elimination</li>
       </ul>
-      <button onclick="selectService('detail')">Book Detail</button>
+      <button onclick="selectService('detail')" data-i18n="service2.btn">Book Detail</button>
     </div>
     <div class="card">
       <div class="card-icon">🛡️</div>
-      <h3>Premium Ceramic</h3>
-      <div class="tagline">Ultimate protection</div>
+      <h3 data-i18n="service3.name">Premium Ceramic</h3>
+      <div class="tagline" data-i18n="service3.tagline">Ultimate protection</div>
       <div class="price"><sup>$</sup>150</div>
-      <div class="per">per treatment</div>
+      <div class="per" data-i18n="service3.per">per treatment</div>
       <ul>
-        <li>Everything in Detail</li>
-        <li>Ceramic nano-coating</li>
-        <li>Engine bay clean</li>
-        <li>Paint correction</li>
+        <li data-i18n="service3.feat1">Everything in Detail</li>
+        <li data-i18n="service3.feat2">Ceramic nano-coating</li>
+        <li data-i18n="service3.feat3">Engine bay clean</li>
+        <li data-i18n="service3.feat4">Paint correction</li>
       </ul>
-      <button onclick="selectService('ceramic')">Book Premium</button>
+      <button onclick="selectService('ceramic')" data-i18n="service3.btn">Book Premium</button>
     </div>
   </div>
 </section>
@@ -404,9 +405,9 @@
 <!-- BEFORE / AFTER -->
 <section class="before-after-section" id="before-after">
   <div class="section-title">
-    <span class="section-tag">Our Work</span>
-    <h2>See the Difference</h2>
-    <p>Drag the slider to see the transformation. Same car, same angle — just our work in between.</p>
+    <span class="section-tag" data-i18n="gallery.tag">Our Work</span>
+    <h2 data-i18n="gallery.title">See the Difference</h2>
+    <p data-i18n="gallery.desc">Drag the slider to see the transformation. Same car, same angle — just our work in between.</p>
   </div>
 
   <div class="slider-container" id="sliderContainer">
@@ -422,8 +423,8 @@
       </div>
     </div>
 
-    <span class="before-label">BEFORE</span>
-    <span class="after-label">AFTER</span>
+    <span class="before-label" data-i18n="gallery.before">BEFORE</span>
+    <span class="after-label" data-i18n="gallery.after">AFTER</span>
     <div class="slider-line" id="sliderLine"></div>
     <div class="slider-knob" id="sliderKnob">⇔</div>
     <input type="range" class="range-slider" id="baSlider" min="0" max="100" value="50">
@@ -439,8 +440,8 @@
           <img src="assets/dirty-car-2.jpg" alt="Before">
         </div>
       </div>
-      <span class="before-label">BEFORE</span>
-      <span class="after-label">AFTER</span>
+      <span class="before-label" data-i18n="gallery.before">BEFORE</span>
+      <span class="after-label" data-i18n="gallery.after">AFTER</span>
       <div class="slider-line" id="galleryLine1"></div>
       <div class="slider-knob" id="galleryKnob1">⇔</div>
       <input type="range" class="range-slider" id="gallerySlider1" min="0" max="100" value="50">
@@ -454,8 +455,8 @@
           <img src="assets/dirty-car-3.jpeg" alt="Before">
         </div>
       </div>
-      <span class="before-label">BEFORE</span>
-      <span class="after-label">AFTER</span>
+      <span class="before-label" data-i18n="gallery.before">BEFORE</span>
+      <span class="after-label" data-i18n="gallery.after">AFTER</span>
       <div class="slider-line" id="galleryLine2"></div>
       <div class="slider-knob" id="galleryKnob2">⇔</div>
       <input type="range" class="range-slider" id="gallerySlider2" min="0" max="100" value="50">
@@ -466,30 +467,30 @@
 <!-- WHY US -->
 <section class="why-us" id="why-us">
   <div class="section-title">
-    <span class="section-tag">Why CarShine</span>
-    <h2>Built Different</h2>
-    <p>We're not just a car wash. We're a detail-obsessed team that treats every car like our own.</p>
+    <span class="section-tag" data-i18n="why.tag">Why CarShine</span>
+    <h2 data-i18n="why.title">Built Different</h2>
+    <p data-i18n="why.desc">We're not just a car wash. We're a detail-obsessed team that treats every car like our own.</p>
   </div>
   <div class="features-grid">
     <div class="feature-card">
       <div class="feature-icon">🌿</div>
-      <h4>Eco-Friendly</h4>
-      <p>We use biodegradable, pH-neutral soaps that are tough on dirt but gentle on the planet and your paint.</p>
+      <h4 data-i18n="why1.title">Eco-Friendly</h4>
+      <p data-i18n="why1.desc">We use biodegradable, pH-neutral soaps that are tough on dirt but gentle on the planet and your paint.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🤲</div>
-      <h4>Hand Wash Only</h4>
-      <p>No harsh machines. Every surface is hand-washed by our trained specialists using premium microfiber cloths.</p>
+      <h4 data-i18n="why2.title">Hand Wash Only</h4>
+      <p data-i18n="why2.desc">No harsh machines. Every surface is hand-washed by our trained specialists using premium microfiber cloths.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">⚡</div>
-      <h4>30-Min Turnaround</h4>
-      <p>Our express service is designed for busy people. In and out in 30 minutes — quality and speed, delivered.</p>
+      <h4 data-i18n="why3.title">30-Min Turnaround</h4>
+      <p data-i18n="why3.desc">Our express service is designed for busy people. In and out in 30 minutes — quality and speed, delivered.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🛡️</div>
-      <h4>Satisfaction Guaranteed</h4>
-      <p>Not happy with the result? We'll redo it at no charge. No questions asked. That's our commitment to you.</p>
+      <h4 data-i18n="why4.title">Satisfaction Guaranteed</h4>
+      <p data-i18n="why4.desc">Not happy with the result? We'll redo it at no charge. No questions asked. That's our commitment to you.</p>
     </div>
   </div>
 </section>
@@ -498,18 +499,18 @@
 <section class="booking-section" id="booking">
   <div class="booking-wrapper">
     <div class="booking-info">
-      <span class="section-tag">Make a Reservation</span>
-      <h2>Ready for a<br>Fresh Clean?</h2>
-      <p>Pick your package, choose a time that works for you, and leave the rest to us. Our team will confirm within 15 minutes.</p>
-      <div class="trust-note">🔒 No payment required today. Pay at the wash.</div>
+      <span class="section-tag" data-i18n="booking.tag">Make a Reservation</span>
+      <h2 data-i18n="booking.title">Ready for a<br>Fresh Clean?</h2>
+      <p data-i18n="booking.desc">Pick your package, choose a time that works for you, and leave the rest to us. Our team will confirm within 15 minutes.</p>
+      <div class="trust-note" data-i18n="booking.note">🔒 No payment required today. Pay at the wash.</div>
     </div>
     <div class="booking-card">
-      <h3>Book Your Wash</h3>
+      <h3 data-i18n="booking.formtitle">Book Your Wash</h3>
       <form id="carwash-booking">
         <div class="form-group">
-          <label for="service">Service Package</label>
+          <label for="service" data-i18n="booking.service">Service Package</label>
           <select id="service" required>
-            <option value="" disabled selected>Choose a package...</option>
+            <option value="" disabled selected data-i18n="booking.serviceph">Choose a package...</option>
             <option value="express">Express Wash — $25</option>
             <option value="detail">Full Detail — $85</option>
             <option value="ceramic">Premium Ceramic — $150</option>
@@ -517,11 +518,11 @@
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label for="date">Date</label>
+            <label for="date" data-i18n="booking.date">Date</label>
             <input type="date" id="date" name="date" required>
           </div>
           <div class="form-group">
-            <label for="time">Time</label>
+            <label for="time" data-i18n="booking.time">Time</label>
             <select id="time" required>
               <option value="09:00">9:00 AM</option>
               <option value="11:00">11:00 AM</option>
@@ -532,14 +533,14 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="name">Your Name</label>
+          <label for="name" data-i18n="booking.name">Your Name</label>
           <input type="text" id="name" placeholder="John Smith" required>
         </div>
         <div class="form-group">
-          <label for="phone">Phone Number</label>
+          <label for="phone" data-i18n="booking.phone">Phone Number</label>
           <input type="tel" id="phone" placeholder="(123) 456-7890" required>
         </div>
-        <button type="submit" class="submit-btn" id="submitBtn">Confirm Appointment</button>
+        <button type="submit" class="submit-btn" id="submitBtn" data-i18n="booking.btn">Confirm Appointment</button>
       </form>
       <div class="form-status" id="formStatus">
         <div style="font-size:3rem;margin-bottom:10px;">✅</div>
@@ -553,32 +554,32 @@
 <!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
   <div class="section-title">
-    <span class="section-tag">Happy Customers</span>
-    <h2>What They Say</h2>
+    <span class="section-tag" data-i18n="testimonials.tag">Happy Customers</span>
+    <h2 data-i18n="testimonials.title">What They Say</h2>
   </div>
   <div class="testimonials-grid">
     <div class="testimonial">
       <div class="stars">★★★★★</div>
-      <blockquote>"I've tried 4 different car washes in the city. CarShine is on another level. My 10-year-old car looks brand new every single time."</blockquote>
+      <blockquote data-i18n="test1.text">"I have tried 4 different car washes in the city. CarShine is on another level. My 10-year-old car looks brand new every single time."</blockquote>
       <div class="reviewer">
         <div class="avatar">MK</div>
-        <div class="reviewer-info"><strong>Marcus K.</strong><span>Full Detail Customer</span></div>
+        <div class="reviewer-info"><strong data-i18n="test1.name">Marcus K.</strong><span data-i18n="test1.type">Full Detail Customer</span></div>
       </div>
     </div>
     <div class="testimonial">
       <div class="stars">★★★★★</div>
-      <blockquote>"Booked online in 2 minutes, dropped off my car, grabbed a coffee, and came back to a spotless vehicle. Exactly what I needed."</blockquote>
+      <blockquote data-i18n="test2.text">"Booked online in 2 minutes, dropped off my car, grabbed a coffee, and came back to a spotless vehicle. Exactly what I needed."</blockquote>
       <div class="reviewer">
         <div class="avatar">SL</div>
-        <div class="reviewer-info"><strong>Sarah L.</strong><span>Express Wash Customer</span></div>
+        <div class="reviewer-info"><strong data-i18n="test2.name">Sarah L.</strong><span data-i18n="test2.type">Express Wash Customer</span></div>
       </div>
     </div>
     <div class="testimonial">
       <div class="stars">★★★★★</div>
-      <blockquote>"The ceramic coating is incredible. Water just rolls right off, and it's been 6 months. Worth every penny. True professionals."</blockquote>
+      <blockquote data-i18n="test3.text">"The ceramic coating is incredible. Water just rolls right off, and it has been 6 months. Worth every penny. True professionals."</blockquote>
       <div class="reviewer">
         <div class="avatar">JR</div>
-        <div class="reviewer-info"><strong>James R.</strong><span>Premium Ceramic Customer</span></div>
+        <div class="reviewer-info"><strong data-i18n="test3.name">James R.</strong><span data-i18n="test3.type">Premium Ceramic Customer</span></div>
       </div>
     </div>
   </div>
@@ -589,10 +590,10 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <a href="#" class="logo"><img src="assets/logo.png" alt="CarShine"><span class="logo-text">Car<span>Shine</span></span></a>
-      <p>Premium car washing and detailing services. We treat your vehicle with the care it deserves, using eco-friendly methods and expert hands.</p>
+      <p data-i18n="footer.desc">Premium car washing and detailing services. We treat your vehicle with the care it deserves, using eco-friendly methods and expert hands.</p>
     </div>
     <div class="footer-col">
-      <h5>Services</h5>
+      <h5 data-i18n="footer.services">Services</h5>
       <ul>
         <li><a href="#services">Express Wash</a></li>
         <li><a href="#services">Full Detail</a></li>
@@ -601,7 +602,7 @@
       </ul>
     </div>
     <div class="footer-col">
-      <h5>Company</h5>
+      <h5 data-i18n="footer.company">Company</h5>
       <ul>
         <li><a href="#">About Us</a></li>
         <li><a href="#">Careers</a></li>
@@ -610,7 +611,7 @@
       </ul>
     </div>
     <div class="footer-col">
-      <h5>Hours</h5>
+      <h5 data-i18n="footer.hours">Hours</h5>
       <ul>
         <li><a href="#">Mon–Fri: 8am – 7pm</a></li>
         <li><a href="#">Saturday: 8am – 6pm</a></li>
@@ -630,7 +631,7 @@
 
 <!-- Floating Phone Button -->
 <div class="phone-bar">
-  <a href="tel:+250784809323" class="phone-btn">📞 Call Now</a>
+  <a href="tel:+250784809323" class="phone-btn" data-i18n="phone.btn">📞 Call Now</a>
 </div>
 
 <script>
@@ -731,21 +732,6 @@
   }
 
   // === LANGUAGE SWITCHER ===
-  const translations = {
-    en: {
-      'nav.services': 'Services', 'nav.gallery': 'Gallery', 'nav.whyus': 'Why Us', 'nav.reviews': 'Reviews', 'nav.book': 'Book Now',
-      'hero.badge': 'Premium Auto Detailing', 'hero.title': 'Your Car<br>Deserves the<br><span>Best Shine</span>',
-      'hero.desc': 'Professional hand-washing and detailing that leaves your vehicle spotless. Eco-friendly products, crafted results, satisfaction guaranteed.',
-      'hero.btn1': 'Book Your Wash', 'hero.btn2': 'See Our Work'
-    },
-    fr: {
-      'nav.services': 'Services', 'nav.gallery': 'Galerie', 'nav.whyus': 'Pourquoi Nous', 'nav.reviews': 'Avis', 'nav.book': 'Réserver',
-      'hero.badge': 'Détaillage Auto Premium', 'hero.title': 'Votre Voiture<br>Mérite le<br><span>Meilleur Brillant</span>',
-      'hero.desc': 'Lavage à la main professionnel qui laisse votre véhicule impeccable. Produits écologiques, résultats soignés, satisfaction garantie.',
-      'hero.btn1': 'Réserver Votre Lavage', 'hero.btn2': 'Voir Notre Travail'
-    }
-  };
-
   let currentLang = 'en';
 
   function switchLang(lang) {
@@ -755,7 +741,7 @@
     
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
-      if (translations[lang][key]) {
+      if (translations[lang] && translations[lang][key]) {
         el.innerHTML = translations[lang][key];
       }
     });
