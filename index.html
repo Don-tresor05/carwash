@@ -38,6 +38,11 @@
   .nav-cta { background: var(--blue); color: var(--white) !important; padding: 10px 24px; border-radius: 50px; font-weight: 600 !important; transition: transform 0.2s, box-shadow 0.2s !important; }
   .nav-cta:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0,123,255,0.5); }
   .mobile-menu-btn { display: none; background: none; border: none; color: var(--white); font-size: 1.8rem; cursor: pointer; padding: 5px; }
+  .lang-switcher { display: flex; gap: 8px; align-items: center; }
+  .lang-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; }
+  .lang-btn.active { background: var(--blue); border-color: var(--blue); color: white; }
+  .lang-btn:hover { background: rgba(255,255,255,0.15); }
+  .nav-right { display: flex; align-items: center; gap: 20px; }
   .mobile-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; background: rgba(13,27,42,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); padding: 20px; z-index: 999; }
   .mobile-menu.active { display: block; }
   .mobile-menu ul { list-style: none; }
@@ -230,6 +235,9 @@
     nav { padding: 16px 20px; }
     nav ul { display: none; }
     .mobile-menu-btn { display: block; }
+    .nav-right { gap: 10px; }
+    .lang-switcher { gap: 4px; }
+    .lang-btn { padding: 5px 10px; font-size: 0.8rem; }
     .hero { padding: 100px 24px 60px; }
     .hero-video { width: 100%; opacity: 0.15; }
     .car-graphic { display: none; }
@@ -258,13 +266,19 @@
 <nav id="navbar">
   <a href="#" class="logo"><img src="assets/logo.png" alt="CarShine"><span class="logo-text">Car<span>Shine</span></span></a>
   <ul>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#before-after">Gallery</a></li>
-    <li><a href="#why-us">Why Us</a></li>
-    <li><a href="#testimonials">Reviews</a></li>
-    <li><a href="#booking" class="nav-cta">Book Now</a></li>
+    <li><a href="#services" data-i18n="nav.services">Services</a></li>
+    <li><a href="#before-after" data-i18n="nav.gallery">Gallery</a></li>
+    <li><a href="#why-us" data-i18n="nav.whyus">Why Us</a></li>
+    <li><a href="#testimonials" data-i18n="nav.reviews">Reviews</a></li>
+    <li><a href="#booking" class="nav-cta" data-i18n="nav.book">Book Now</a></li>
   </ul>
-  <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()">☰</button>
+  <div class="nav-right">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="switchLang('en')">EN</button>
+      <button class="lang-btn" onclick="switchLang('fr')">FR</button>
+    </div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()">☰</button>
+  </div>
 </nav>
 
 <!-- MOBILE MENU -->
@@ -285,12 +299,12 @@
   </video>
   <div class="drops" id="drops"></div>
   <div class="hero-content">
-    <div class="hero-badge">⬤ &nbsp;Premium Auto Detailing</div>
-    <h1>Your Car<br>Deserves the<br><span>Best Shine</span></h1>
-    <p>Professional hand-washing and detailing that leaves your vehicle spotless. Eco-friendly products, crafted results, satisfaction guaranteed.</p>
+    <div class="hero-badge" data-i18n="hero.badge">⬤ &nbsp;Premium Auto Detailing</div>
+    <h1 data-i18n="hero.title">Your Car<br>Deserves the<br><span>Best Shine</span></h1>
+    <p data-i18n="hero.desc">Professional hand-washing and detailing that leaves your vehicle spotless. Eco-friendly products, crafted results, satisfaction guaranteed.</p>
     <div class="hero-btns">
-      <a href="#booking" class="btn-primary">Book Your Wash</a>
-      <a href="#before-after" class="btn-ghost">See Our Work</a>
+      <a href="#booking" class="btn-primary" data-i18n="hero.btn1">Book Your Wash</a>
+      <a href="#before-after" class="btn-ghost" data-i18n="hero.btn2">See Our Work</a>
     </div>
     <div class="hero-stats">
       <div><div class="stat-num">4.9★</div><div class="stat-label">Customer Rating</div></div>
@@ -714,6 +728,37 @@
     const btn = document.getElementById('mobileMenuBtn');
     menu.classList.toggle('active');
     btn.textContent = menu.classList.contains('active') ? '✕' : '☰';
+  }
+
+  // === LANGUAGE SWITCHER ===
+  const translations = {
+    en: {
+      'nav.services': 'Services', 'nav.gallery': 'Gallery', 'nav.whyus': 'Why Us', 'nav.reviews': 'Reviews', 'nav.book': 'Book Now',
+      'hero.badge': 'Premium Auto Detailing', 'hero.title': 'Your Car<br>Deserves the<br><span>Best Shine</span>',
+      'hero.desc': 'Professional hand-washing and detailing that leaves your vehicle spotless. Eco-friendly products, crafted results, satisfaction guaranteed.',
+      'hero.btn1': 'Book Your Wash', 'hero.btn2': 'See Our Work'
+    },
+    fr: {
+      'nav.services': 'Services', 'nav.gallery': 'Galerie', 'nav.whyus': 'Pourquoi Nous', 'nav.reviews': 'Avis', 'nav.book': 'Réserver',
+      'hero.badge': 'Détaillage Auto Premium', 'hero.title': 'Votre Voiture<br>Mérite le<br><span>Meilleur Brillant</span>',
+      'hero.desc': 'Lavage à la main professionnel qui laisse votre véhicule impeccable. Produits écologiques, résultats soignés, satisfaction garantie.',
+      'hero.btn1': 'Réserver Votre Lavage', 'hero.btn2': 'Voir Notre Travail'
+    }
+  };
+
+  let currentLang = 'en';
+
+  function switchLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang][key]) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
   }
 </script>
 </body>
