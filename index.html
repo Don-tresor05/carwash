@@ -230,9 +230,13 @@
 
   /* PHONE CTA */
   .phone-bar { position: fixed; bottom: 24px; right: 24px; z-index: 999; }
-  .phone-btn { display: flex; align-items: center; gap: 10px; background: var(--orange); color: white; padding: 14px 22px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.88rem; box-shadow: 0 8px 30px rgba(255,107,0,0.5); transition: transform 0.2s; animation: pulse-o 2.5s infinite; }
+  .phone-btn { display: flex; align-items: center; gap: 10px; background: var(--orange); color: white; padding: 14px 22px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.88rem; box-shadow: 0 8px 30px rgba(255,107,0,0.5); transition: transform 0.2s; animation: pulse-o 2.5s infinite; cursor: pointer; border: none; }
   @keyframes pulse-o { 0%,100% { box-shadow: 0 8px 30px rgba(255,107,0,0.5); } 50% { box-shadow: 0 8px 40px rgba(255,107,0,0.9); } }
   .phone-btn:hover { transform: scale(1.05); }
+  .phone-dropdown { display: none; position: absolute; bottom: 100%; right: 0; margin-bottom: 10px; background: rgba(13,27,42,0.98); border: 1px solid var(--glass-border); border-radius: 12px; padding: 8px; min-width: 180px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+  .phone-dropdown.active { display: block; }
+  .phone-option { display: block; padding: 10px 14px; border-radius: 8px; text-decoration: none; color: rgba(255,255,255,0.85); font-size: 0.85rem; transition: background 0.2s; }
+  .phone-option:hover { background: rgba(255,107,0,0.15); }
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
@@ -645,7 +649,12 @@
 
 <!-- Floating Phone Button -->
 <div class="phone-bar">
-  <a href="tel:+250784809323" class="phone-btn" data-i18n="phone.btn">📞 Call Now</a>
+  <button class="phone-btn" onclick="togglePhoneDropdown()" data-i18n="phone.btn">📞 Call Now</button>
+  <div class="phone-dropdown" id="phoneDropdown">
+    <a href="tel:+250788394374" class="phone-option">📞 +250 788 394 374</a>
+    <a href="tel:+250792715337" class="phone-option">📞 +250 792 715 337</a>
+    <a href="tel:+250798958504" class="phone-option">📞 +250 798 958 504</a>
+  </div>
 </div>
 
 <script>
@@ -777,12 +786,23 @@
     });
   }
 
-  // Close dropdown when clicking outside
+  // === PHONE DROPDOWN ===
+  function togglePhoneDropdown() {
+    document.getElementById('phoneDropdown').classList.toggle('active');
+  }
+
+  // Close dropdowns when clicking outside
   document.addEventListener('click', function(e) {
     const langSwitcher = document.querySelector('.lang-switcher');
-    const dropdown = document.getElementById('langDropdown');
+    const langDropdown = document.getElementById('langDropdown');
     if (langSwitcher && !langSwitcher.contains(e.target)) {
-      dropdown.classList.remove('active');
+      langDropdown.classList.remove('active');
+    }
+    
+    const phoneBar = document.querySelector('.phone-bar');
+    const phoneDropdown = document.getElementById('phoneDropdown');
+    if (phoneBar && !phoneBar.contains(e.target)) {
+      phoneDropdown.classList.remove('active');
     }
   });
 </script>
