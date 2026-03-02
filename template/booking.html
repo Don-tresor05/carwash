@@ -4,7 +4,7 @@
 
 	<head>
 
-		<title>Booking - Auto Spa</title>
+		<title>Booking - CleanPro</title>
 		<meta name="keywords" content="" />
 		<meta name="description" content="" />		
 
@@ -60,7 +60,7 @@
 		<div class="template-header-bottom">
 			<div class="template-main">
 				<div class="template-header-bottom-page-title">
-					<h1>Book Your Wash</h1>
+					<h1>Book Your Service</h1>
 				</div>
 				<div class="template-header-bottom-page-breadcrumb">
 					<a href="home.html">Home</a><span class="template-icon-meta-arrow-right-12"></span><a href="#">Booking</a>
@@ -90,9 +90,16 @@
 							<label for="booking-form-service">Service *</label>
 							<select name="booking-form-service" id="booking-form-service">
 								<option value="">Select a service</option>
-								<option value="basic">Basic Wash - $15</option>
-								<option value="premium">Premium Wash - $35</option>
-								<option value="deluxe">Deluxe Detail - $75</option>
+								<optgroup label="🚗 Auto Services">
+									<option value="express">Express Wash - $15</option>
+									<option value="detail">Full Detail - $35</option>
+									<option value="ceramic">Premium Ceramic - $75</option>
+								</optgroup>
+								<optgroup label="🏠 Home Services">
+									<option value="window">Window Cleaning - $30/room</option>
+									<option value="carpet">Carpet Cleaning - $50/room</option>
+									<option value="upholstery">Upholstery Cleaning - $25/piece</option>
+								</optgroup>
 							</select>
 						</div>
 						<div class="template-component-form-field template-state-block template-margin-top-2">
@@ -115,8 +122,8 @@
 							</select>
 						</div>
 						<div class="template-component-form-field template-state-block template-margin-top-2">
-							<label for="booking-form-vehicle">Vehicle Type</label>
-							<input type="text" name="booking-form-vehicle" id="booking-form-vehicle" placeholder="e.g., Toyota Camry"/>
+							<label for="booking-form-address">Address (for home services)</label>
+							<input type="text" name="booking-form-address" id="booking-form-address" placeholder="123 Main St"/>
 						</div>
 						<div class="template-margin-top-3 template-state-block">
 							<input type="submit" value="Submit Booking" class="template-component-button" name="booking-form-submit" id="booking-form-submit"/>
@@ -125,7 +132,7 @@
 				</div>
 				<div class="template-layout-column-right">
 					<h3>Booking Information</h3>
-					<p class="template-margin-top-2">Fill out the form to book your car wash appointment. We will contact you shortly to confirm your booking.</p>
+					<p class="template-margin-top-2">Select your service type and fill out the form. We offer both auto and home cleaning services.</p>
 					<div class="template-margin-top-3">
 						<h4>Business Hours</h4>
 						<p class="template-margin-top-1">Monday - Friday: 8:00 AM - 6:00 PM<br/>
@@ -135,7 +142,7 @@
 					<div class="template-margin-top-3">
 						<h4>Contact</h4>
 						<p class="template-margin-top-1">Phone: (555) 123-4567<br/>
-						Email: info@autospa.com</p>
+						Email: info@cleanpro.com</p>
 					</div>
 				</div>
 			</div>
@@ -148,16 +155,16 @@
 				<div class="template-layout-25x25x25x25 template-clear-fix">
 					<div class="template-layout-column-left">
 						<h6>About</h6>
-						<p>AutoSpa is an eco-friendly hand car wash and detailing service.</p>
+						<p>CleanPro offers complete cleaning solutions for your car and home.</p>
 						<img src="media/image/logo.png" alt="" class="template-logo" />
 					</div>
 					<div class="template-layout-column-center-left">
 						<h6>Services</h6>
 						<ul class="template-list-reset">
-							<li><a href="services.html">Exterior Hand Wash</a></li>
-							<li><a href="services.html">Interior Vacuum</a></li>
-							<li><a href="services.html">Wheel Shine</a></li>
-							<li><a href="services.html">Hand Wax</a></li>
+							<li><a href="services.html">Auto Cleaning</a></li>
+							<li><a href="services.html">Window Cleaning</a></li>
+							<li><a href="services.html">Carpet Cleaning</a></li>
+							<li><a href="services.html">Upholstery Cleaning</a></li>
 						</ul>
 					</div>
 					<div class="template-layout-column-center-right">
@@ -171,7 +178,7 @@
 					</div>
 					<div class="template-layout-column-right">
 						<h6>Contact</h6>
-						<p>Phone: (555) 123-4567<br/>Email: info@autospa.com</p>
+						<p>Phone: (555) 123-4567<br/>Email: info@cleanpro.com</p>
 					</div>
 				</div>
 			</div>
@@ -181,7 +188,7 @@
 					<li><a href="#" class="template-icon-social-facebook" target="_blank"></a></li>
 				</ul>
 				<div class="template-footer-bottom-copyright">
-					&copy; 2024 AutoSpa Car Wash
+					&copy; 2024 CleanPro - Complete Cleaning Solutions
 				</div>
 			</div>
 		</div>
