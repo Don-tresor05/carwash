@@ -474,22 +474,19 @@
   <div class="section-title">
     <span class="section-tag" data-i18n="gallery.tag">Our Work</span>
     <h2 data-i18n="gallery.title">See the Difference</h2>
-    <p data-i18n="gallery.desc">Drag the slider to see the transformation. Same car, same angle — just our work in between.</p>
+    <p data-i18n="gallery.desc">Drag the slider to see the transformation. Same angle — just our work in between.</p>
   </div>
 
+  <h3 style="text-align:center;font-family:'Bebas Neue';font-size:2rem;letter-spacing:2px;margin-bottom:30px;">🚗 Auto Cleaning</h3>
   <div class="slider-container" id="sliderContainer">
-    <!-- AFTER (clean) -->
     <div class="after-panel">
       <img src="assets/washed-car-1.jpg" alt="After - Clean Car" class="img-fill" style="object-fit: cover;">
     </div>
-
-    <!-- BEFORE (dirty) -->
     <div class="before-panel" id="beforePanel">
       <div class="before-inner">
         <img src="assets/dirty-car-1.webp" alt="Before - Dirty Car" style="width:700px;height:100%;object-fit:cover;">
       </div>
     </div>
-
     <span class="before-label" data-i18n="gallery.before">BEFORE</span>
     <span class="after-label" data-i18n="gallery.after">AFTER</span>
     <div class="slider-line" id="sliderLine"></div>
@@ -527,6 +524,58 @@
       <div class="slider-line" id="galleryLine2"></div>
       <div class="slider-knob" id="galleryKnob2">⇔</div>
       <input type="range" class="range-slider" id="gallerySlider2" min="0" max="100" value="50">
+    </div>
+  </div>
+
+  <h3 style="text-align:center;font-family:'Bebas Neue';font-size:2rem;letter-spacing:2px;margin:80px 0 30px;">🏠 Home Cleaning</h3>
+  <div class="gallery-grid">
+    <div class="gallery-item" id="gallery3">
+      <div class="after-panel">
+        <img src="assets/clean_window.jpg" alt="Clean Window">
+      </div>
+      <div class="before-panel" id="galleryBefore3">
+        <div class="before-inner">
+          <img src="assets/dirt_window1.jpg" alt="Dirty Window">
+        </div>
+      </div>
+      <span class="before-label">BEFORE</span>
+      <span class="after-label">AFTER</span>
+      <div class="slider-line" id="galleryLine3"></div>
+      <div class="slider-knob" id="galleryKnob3">⇔</div>
+      <input type="range" class="range-slider" id="gallerySlider3" min="0" max="100" value="50">
+      <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:white;padding:6px 14px;border-radius:8px;font-size:0.85rem;font-weight:600;z-index:11;">🪟 Window Cleaning</div>
+    </div>
+    <div class="gallery-item" id="gallery4">
+      <div class="after-panel">
+        <img src="assets/clean_carpet.jpg" alt="Clean Carpet">
+      </div>
+      <div class="before-panel" id="galleryBefore4">
+        <div class="before-inner">
+          <img src="assets/dirty_carpet.webp" alt="Dirty Carpet">
+        </div>
+      </div>
+      <span class="before-label">BEFORE</span>
+      <span class="after-label">AFTER</span>
+      <div class="slider-line" id="galleryLine4"></div>
+      <div class="slider-knob" id="galleryKnob4">⇔</div>
+      <input type="range" class="range-slider" id="gallerySlider4" min="0" max="100" value="50">
+      <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:white;padding:6px 14px;border-radius:8px;font-size:0.85rem;font-weight:600;z-index:11;">🧹 Carpet Cleaning</div>
+    </div>
+    <div class="gallery-item" id="gallery5">
+      <div class="after-panel">
+        <img src="assets/clean_chair.webp" alt="Clean Upholstery">
+      </div>
+      <div class="before-panel" id="galleryBefore5">
+        <div class="before-inner">
+          <img src="assets/dirty_upholstery.png" alt="Dirty Upholstery">
+        </div>
+      </div>
+      <span class="before-label">BEFORE</span>
+      <span class="after-label">AFTER</span>
+      <div class="slider-line" id="galleryLine5"></div>
+      <div class="slider-knob" id="galleryKnob5">⇔</div>
+      <input type="range" class="range-slider" id="gallerySlider5" min="0" max="100" value="50">
+      <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:white;padding:6px 14px;border-radius:8px;font-size:0.85rem;font-weight:600;z-index:11;">🛋️ Upholstery Cleaning</div>
     </div>
   </div>
 </section>
@@ -760,6 +809,9 @@
   
   setupGallerySlider(1);
   setupGallerySlider(2);
+  setupGallerySlider(3);
+  setupGallerySlider(4);
+  setupGallerySlider(5);
 
   // === SCROLL REVEAL ===
   const observer = new IntersectionObserver(entries => {
