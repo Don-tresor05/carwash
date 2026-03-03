@@ -13,15 +13,37 @@
 
 ### 3. Create Email Template
 - Dashboard → Email Templates → Create New Template
-- Template content:
+- **Subject:** New CleanPro Booking - {{name}}
+- **Template content:**
 ```
-New CleanPro Booking
+🧼 NEW BOOKING RECEIVED
 
-Service: {{service}}
-Date: {{date}}
-Time: {{time}}
-Customer: {{name}}
-Phone: {{phone}}
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 SERVICE DETAILS
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🛎️  Service Package:
+   {{service}}
+
+📅 Date:
+   {{date}}
+
+⏰ Time:
+   {{time}}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+👤 CUSTOMER DETAILS
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👤 Name:
+   {{name}}
+
+📞 Phone:
+   {{phone}}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Action Required: Call customer to confirm
 ```
 
 ### 4. Get Your Keys
