@@ -832,7 +832,7 @@
   });
 
   // === EMAILJS INIT ===
-  emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
+  emailjs.init('srZFWKQqC6wxfN9A2'); // Replace with your EmailJS public key
 
   // === BOOKING FORM ===
   document.getElementById('carwash-booking').addEventListener('submit', function(e) {
@@ -858,7 +858,7 @@
       phone: document.getElementById('phone').value
     };
 
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', params)
+    emailjs.send('service_3km3inp', 'template_0bvkkjx', params)
       .then(() => {
         this.style.display = 'none';
         document.getElementById('formStatus').classList.add('visible');
