@@ -6,6 +6,7 @@
 <title>CleanPro – Complete Cleaning Solutions</title>
 <link rel="icon" type="image/png" href="assets/logo.png">
 <script src="translations.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -830,16 +831,44 @@
     this.value = v;
   });
 
+  // === EMAILJS INIT ===
+  emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
+
   // === BOOKING FORM ===
   document.getElementById('carwash-booking').addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
     btn.innerHTML = '<span class="spinner"></span>Booking...';
     btn.disabled = true;
-    setTimeout(() => {
-      this.style.display = 'none';
-      document.getElementById('formStatus').classList.add('visible');
-    }, 1800);
+
+    const serviceMap = {
+      express: 'Express Wash — 5,000 RWF',
+      detail: 'Full Detail — 10,000 RWF',
+      ceramic: 'Premium Ceramic — 15,000 RWF',
+      window: 'Window Cleaning — 8,000 RWF/room',
+      carpet: 'Carpet Cleaning — 12,000 RWF/room',
+      upholstery: 'Upholstery Cleaning — 6,000 RWF/piece'
+    };
+
+    const params = {
+      service: serviceMap[document.getElementById('service').value],
+      date: document.getElementById('date').value,
+      time: document.getElementById('time').value,
+      name: document.getElementById('name').value,
+      phone: document.getElementById('phone').value
+    };
+
+    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', params)
+      .then(() => {
+        this.style.display = 'none';
+        document.getElementById('formStatus').classList.add('visible');
+      })
+      .catch(err => {
+        btn.innerHTML = 'Try Again';
+        btn.disabled = false;
+        alert('Booking failed. Please call us directly.');
+        console.error(err);
+      });
   });
 
   // === SELECT SERVICE FROM CARDS ===
