@@ -52,6 +52,7 @@
               <td style="vertical-align: top">
                 <div style="color: #0d1b2a; font-size: 18px; font-weight: 600; margin-bottom: 4px">{{name}}</div>
                 <div style="color: #64748b; font-size: 14px; margin-top: 6px">📞 {{phone}}</div>
+                <div style="color: #64748b; font-size: 14px; margin-top: 6px">📍 {{location}}</div>
               </td>
             </tr>
           </table>

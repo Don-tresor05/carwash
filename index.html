@@ -194,6 +194,10 @@
   .submit-btn { background: var(--blue); color: white; border: none; padding: 15px; width: 100%; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 4px; transition: background 0.3s, transform 0.2s; letter-spacing: 0.5px; }
   .submit-btn:hover { background: #0056b3; transform: translateY(-1px); }
   .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+  .location-wrapper { position: relative; }
+  .location-btn { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: var(--blue); color: white; border: none; padding: 8px 12px; border-radius: 8px; font-size: 0.75rem; cursor: pointer; transition: background 0.2s; }
+  .location-btn:hover { background: #0056b3; }
+  .location-btn:disabled { opacity: 0.6; cursor: not-allowed; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .spinner { display: inline-block; width: 15px; height: 15px; border: 2px solid white; border-top-color: transparent; border-radius: 50%; animation: spin 0.7s linear infinite; vertical-align: middle; margin-right: 8px; }
   .form-status { display: none; text-align: center; padding: 20px 0; }
@@ -664,6 +668,13 @@
           <label for="phone" data-i18n="booking.phone">Phone Number</label>
           <input type="tel" id="phone" placeholder="(123) 456-7890" required>
         </div>
+        <div class="form-group">
+          <label for="location">Location / Address</label>
+          <div class="location-wrapper">
+            <input type="text" id="location" placeholder="Enter your address or use GPS" required>
+            <button type="button" class="location-btn" id="locationBtn" onclick="getLocation()">📍 Use GPS</button>
+          </div>
+        </div>
         <button type="submit" class="submit-btn" id="submitBtn" data-i18n="booking.btn">Confirm Appointment</button>
       </form>
       <div class="form-status" id="formStatus">
@@ -855,7 +866,8 @@
       date: document.getElementById('date').value,
       time: document.getElementById('time').value,
       name: document.getElementById('name').value,
-      phone: document.getElementById('phone').value
+      phone: document.getElementById('phone').value,
+      location: document.getElementById('location').value
     };
 
     emailjs.send('service_3km3inp', 'template_0bvkkjx', params)
@@ -926,6 +938,49 @@
   // === PHONE DROPDOWN ===
   function togglePhoneDropdown() {
     document.getElementById('phoneDropdown').classList.toggle('active');
+  }
+
+  // === GEOLOCATION ===
+  function getLocation() {
+    const btn = document.getElementById('locationBtn');
+    const input = document.getElementById('location');
+    
+    if (!navigator.geolocation) {
+      alert('Geolocation is not supported by your browser');
+      return;
+    }
+    
+    btn.disabled = true;
+    btn.textContent = '⏳ Getting...';
+    
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        
+        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
+          .then(res => res.json())
+          .then(data => {
+            const address = data.display_name || `${lat}, ${lon}`;
+            input.value = address;
+            btn.textContent = '✓ Got it';
+            setTimeout(() => {
+              btn.textContent = '📍 Use GPS';
+              btn.disabled = false;
+            }, 2000);
+          })
+          .catch(() => {
+            input.value = `${lat}, ${lon}`;
+            btn.textContent = '📍 Use GPS';
+            btn.disabled = false;
+          });
+      },
+      error => {
+        alert('Unable to get location. Please enter manually.');
+        btn.textContent = '📍 Use GPS';
+        btn.disabled = false;
+      }
+    );
   }
 
   // Close dropdowns when clicking outside
